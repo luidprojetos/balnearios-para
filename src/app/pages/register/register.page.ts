@@ -31,6 +31,7 @@ export class RegisterPage implements OnInit {
       /\d/,
       /\d/,
       /\d/,
+      /\d/,
       '-',
       /\d/,
       /\d/,
@@ -72,7 +73,13 @@ export class RegisterPage implements OnInit {
     }
 
     if (this.avatar) {
-      this.registerUser.avatar = await this.storageService.mandarFoto(upload);
+      const newAvatar  = await this.storageService.mandarFoto(upload);
+      this.registerUser.avatar = newAvatar[0]
+    }
+
+    if(this.images){
+      const newImages = await this.storageService.mandarFotos(this.images)
+      this.registerUser.cardapio = newImages
     }
 
     await this.authService.cadastrar(this.registerUser);

@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
 import { uploadBytesResumable } from '@angular/fire/storage';
-import {getStorage,ref,listAll,ListResult, getDownloadURL, uploadBytes,} from 'firebase/storage';
+import {
+  getStorage,
+  ref,
+  listAll,
+  ListResult,
+  getDownloadURL,
+} from 'firebase/storage';
 import { Observable, from } from 'rxjs';
-import { map, mergeMap, toArray } from 'rxjs/operators';
-import { getAuth } from '@angular/fire/auth';
+import { mergeMap } from 'rxjs/operators';
+import { v4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root',
@@ -14,27 +20,33 @@ export class StorageService {
 
   constructor() {}
 
-  async mandarFoto(input: any): Promise<string> {
+  async mandarFoto(input: any): Promise<any> {
     if (!input.files) return '';
     const files: FileList = input.files;
-    const auth = getAuth();
-    const user = auth.currentUser;
-    const uid = user?.uid;
-
+    const downloadURLs:any [] = []
     for (let i = 0; i < files.length; i++) {
       const file = files.item(i);
       if (file) {
-        const storageRef = ref(this.storage, `user/${uid}/idTicket/${file.name}`);
+        const storageRef = ref(this.storage, `user/${v4()}/${file.name}`);
         await uploadBytesResumable(storageRef, file);
-
-
-        const downloadURL = await getDownloadURL(storageRef);
-        return downloadURL;
+        downloadURLs.push(await getDownloadURL(storageRef))
       }
     }
-    return '';
+    return downloadURLs;
   }
 
+  async mandarFotos(input: any): Promise<any> {
+    const downloadURLs:any [] = []
+    for (let i = 0; i < input.length; i++) {
+      const file = input[i];
+      if (file) {
+        const storageRef = ref(this.storage, `user/${v4()}/${file.name}`);
+        await uploadBytesResumable(storageRef, file);
+        downloadURLs.push(await getDownloadURL(storageRef))
+      }
+    }
+    return downloadURLs;
+  }
 
   verFoto(): Observable<string[]> {
     return from(listAll(this.listRef)).pipe(
