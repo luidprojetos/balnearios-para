@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyARc_fInHXQvmDh4LVk09jHOps045MvuTE',
-    authDomain: 'belem-c312b.firebaseapp.com',
-    projectId: 'belem-c312b',
-    storageBucket: 'belem-c312b.appspot.com',
-    messagingSenderId: '557226074640',
-    appId: '1:557226074640:web:fd3701b033d40087b06095',
+    apiKey: 'AIzaSyCs0Vi2Snmkzbh3VEeryb-iJXwm0-RlR4A',
+    authDomain: 'balneario-dad65.firebaseapp.com',
+    projectId: 'balneario-dad65',
+    storageBucket: 'balneario-dad65.appspot.com',
+    messagingSenderId: '22484828469',
+    appId: '1:22484828469:web:e8b1ce31cfcbeaf6a0cc7c',
   },
 };
