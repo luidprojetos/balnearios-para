@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true">
   <div class="header">
-    <app-backbutton [path]="'login'"></app-backbutton>
     <div class="content">
+      <app-backbutton [path]="'login'"></app-backbutton>
       <div class="text">
         <h1 *ngIf="tipo === 0">CADASTRE SEU AMBIENTE</h1>
         <h1 *ngIf="tipo === 1">CADASTRE-SE</h1>
@@ -58,24 +58,49 @@
       ></ion-input>
     </ion-item>
 
-    <ion-item lines="none" *ngIf="tipo === 0">
-      <ion-icon name="pin-outline"></ion-icon>
-      <ion-input
-        [(ngModel)]="registerUser.cardapio"
-        label="Cardápio"
-        labelPlacement="floating"
-        placeholder="Cardápio"
-      ></ion-input>
+    <ion-item lines="none" *ngIf="tipo === 0" >
+      <div>
+        <ion-label>
+          <ion-icon name="clipboard-outline"></ion-icon>
+          <label for="foto-cardapio">Cardapio</label>
+        </ion-label>
+
+
+
+        <div>
+          <ion-grid>
+            <ion-row  size="4" class="linha">
+              <ion-col *ngFor="let item of urls" size="4" class="ver" >
+                <div class="img">
+                 <img [src]="item" alt="imagens">
+                </div>
+              </ion-col>
+              <ion-col>
+                <div class="cardapio">
+                  <label for="foto-cardapio">
+                  <input
+                    type="file"
+                    multiple
+                    style="display: none"
+                    #cardapio
+                    id="foto-cardapio"
+                    name="foto-cardapio"
+                    (change)="handleCardapio($event)"
+                  />
+                  <ion-label><ion-icon name="camera-outline"></ion-icon>
+                    Enviar imagens
+                  </ion-label>
+                  </label>
+                </div>
+              </ion-col>
+            </ion-row>
+
+          </ion-grid>
+        </div>
+
+      </div>
     </ion-item>
-    <ion-item lines="none" *ngIf="tipo === 0">
-      <ion-icon name="pin-outline"></ion-icon>
-      <ion-input
-        [(ngModel)]="registerUser.link"
-        label="Redes Sociais"
-        labelPlacement="floating"
-        placeholder="Redes Sociais"
-      ></ion-input>
-    </ion-item>
+
     <div lines="none" class="nascimento" *ngIf="tipo === 1">
       <ion-label
         ><ion-icon name="calendar-outline"></ion-icon>Data de
@@ -100,11 +125,18 @@
     </ion-item>
 
     <ion-item lines="none"  *ngIf="tipo === 0" >
-      <ion-label>Horario de funcionamento</ion-label>
-      <div class="semana"*ngFor="let i of semana">
-        <ion-checkbox (onChange)="EventChange($event)">{{i.dia}}</ion-checkbox>
 
-      </div>
+
+      <ion-grid>
+        <ion-row *ngFor="let i of semana">
+          <ion-checkbox  (ionChange)="EventChange($event, i)">{{i.dia}}</ion-checkbox>
+          <div *ngIf="i.ativo" class="horarioFuncionamento">
+            <ion-datetime presentation="time" (ionChange)="tempoInicioCahnge($event, i)"></ion-datetime>
+            <ion-label>ate</ion-label>
+            <ion-datetime presentation="time" (ionChange)="tempoFimCahnge($event, i)"></ion-datetime>
+          </div>
+        </ion-row>
+      </ion-grid>
     </ion-item>
 
     <ion-item *ngIf="tipo === 0" lines="none">

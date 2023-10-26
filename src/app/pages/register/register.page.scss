@@ -98,3 +98,21 @@ ion-content {
   display: flex;
   flex-direction: column;
 }
+.horarioFuncionamento{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  gap: 1rem;
+  align-items: center;
+}
+
+img{
+  width: 100px;
+  height: 100px;
+  background-color: #3d56f0;
+}
+
+.cardapio{
+  display: flex;
+
+}

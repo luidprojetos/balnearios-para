@@ -43,7 +43,6 @@ export class AuthService {
       userData.password
     );
     return docData(doc(this.userCollection, user.user.uid)).subscribe((res) => {
-      console.log(res)
       sessionStorage.setItem('userData', JSON.stringify({res}));
     });
   }

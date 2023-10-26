@@ -10,14 +10,14 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  public semana: any = [
-    { dia: 'Domingo', ativo: false },
-    { dia: 'Segunda',  ativo: false },
-    { dia: 'Terça',  ativo: false },
-    { dia: 'Quarta',  ativo: false },
-    { dia: 'Quinta',  ativo: false },
-    { dia: 'Sexta',  ativo: false },
-    { dia: 'Sabado', ativo: false },
+  public semana: any[] = [
+    { dia: 'Domingo', ativo: false, horasInicio: '', horasFim: '' },
+    { dia: 'Segunda', ativo: false, horasInicio: '', horasFim: '' },
+    { dia: 'Terça', ativo: false, horasInicio: '', horasFim: '' },
+    { dia: 'Quarta', ativo: false, horasInicio: '', horasFim: '' },
+    { dia: 'Quinta', ativo: false, horasInicio: '', horasFim: '' },
+    { dia: 'Sexta', ativo: false, horasInicio: '', horasFim: '' },
+    { dia: 'Sabado', ativo: false, horasInicio: '', horasFim: '' },
   ];
 
   readonly phoneMask: MaskitoOptions = {
@@ -47,7 +47,10 @@ export class RegisterPage implements OnInit {
   public registerUser: any = {};
   public tipo: any;
   public url: any = null;
+  public urls: any = null;
   public avatar: any = null;
+  public images: any = null;
+
   constructor(
     private router: Router,
     private sanitizer: DomSanitizer,
@@ -62,9 +65,16 @@ export class RegisterPage implements OnInit {
   }
 
   async criarUsuario(upload: any) {
+    if (this.tipo === 0) {
+      Object.assign(this.registerUser, {
+        horarioFuincionamento: this.semana,
+      });
+    }
+
     if (this.avatar) {
       this.registerUser.avatar = await this.storageService.mandarFoto(upload);
     }
+
     await this.authService.cadastrar(this.registerUser);
 
     this.router.navigate(['login']);
@@ -75,7 +85,7 @@ export class RegisterPage implements OnInit {
     reader.onload = (e: any) => {
       this.url = e.target.result;
     };
-
+    console.log(this.url)
     reader.readAsDataURL(this.avatar);
   }
 
@@ -90,7 +100,48 @@ export class RegisterPage implements OnInit {
     fileInput.click();
   }
 
-  EventChange(e:any){
-    console.log(e)
+  EventChange(e: any, item: any) {
+    const index = this.semana.indexOf(item);
+    this.semana[index].ativo = e.detail.checked;
+
+    console.log(this.semana);
+  }
+
+  tempoInicioCahnge(e: any, item: any) {
+    const index = this.semana.indexOf(item);
+    this.semana[index].horasInicio = e.detail.value;
+    console.log(this.semana);
+  }
+
+  tempoFimCahnge(e: any, item: any) {
+    const index = this.semana.indexOf(item);
+    this.semana[index].horasFim = e.detail.value;
+    console.log(this.semana);
+  }
+
+  handleCardapio(event: any) {
+    const files = event.target.files;
+
+    // Certifique-se de que há arquivos para processar
+    if (files.length > 0) {
+      this.images = files;
+      this.urls = [];
+
+      for (let i = 0; i < files.length; i++) {
+        const reader = new FileReader();
+
+        reader.onload = (e: any) => {
+          this.urls.push(e.target.result);
+
+          // Verifique se todas as imagens foram carregadas antes de prosseguir
+          if (this.urls.length === files.length) {
+            // Todos os arquivos foram carregados, você pode fazer algo com as URLs aqui
+          }
+        };
+
+        reader.readAsDataURL(files[i]);
+      }
+      console.log(this.urls)
+    }
   }
 }
