@@ -1,0 +1,144 @@
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <app-backbutton [path]="'login'"></app-backbutton>
+    <div class="content">
+      <div class="text">
+        <h1 *ngIf="tipo === 0">CADASTRE SEU AMBIENTE</h1>
+        <h1 *ngIf="tipo === 1">CADASTRE-SE</h1>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="avatar"
+      ><label for="upload-photo">
+        <input
+          #upload
+          style="display: none"
+          id="upload-photo"
+          name="upload-photo"
+          type="file"
+          (change)="handleFile($event)"
+        />
+
+        <img *ngIf="url" [src]="url" alt="User Photo" style="min-width: 150px; min-height: 150px;" />
+        <ion-icon
+          style="font-size: 150px"
+          *ngIf="!url"
+          name="person-sharp"
+        ></ion-icon>
+      </label>
+      <ion-label *ngIf="!url">Selecione uma foto</ion-label>
+    </div>
+    <ion-item lines="none">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-input
+        [(ngModel)]="registerUser.nome"
+        label="Nome"
+        labelPlacement="floating"
+        placeholder="Nome completo"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon name="mail-outline"></ion-icon>
+      <ion-input
+        [(ngModel)]="registerUser.email"
+        label="E-mail"
+        labelPlacement="floating"
+        placeholder="E-mail"
+        type="email"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="none" *ngIf="tipo === 0">
+      <ion-icon name="pin-outline"></ion-icon>
+      <ion-input
+        [(ngModel)]="registerUser.endereco"
+        label="Endereço"
+        labelPlacement="floating"
+        placeholder="Endereço"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" *ngIf="tipo === 0">
+      <ion-icon name="pin-outline"></ion-icon>
+      <ion-input
+        [(ngModel)]="registerUser.cardapio"
+        label="Cardápio"
+        labelPlacement="floating"
+        placeholder="Cardápio"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="none" *ngIf="tipo === 0">
+      <ion-icon name="pin-outline"></ion-icon>
+      <ion-input
+        [(ngModel)]="registerUser.link"
+        label="Redes Sociais"
+        labelPlacement="floating"
+        placeholder="Redes Sociais"
+      ></ion-input>
+    </ion-item>
+    <div lines="none" class="nascimento" *ngIf="tipo === 1">
+      <ion-label
+        ><ion-icon name="calendar-outline"></ion-icon>Data de
+        nascimento</ion-label
+      >
+      <ion-datetime
+        [(ngModel)]="registerUser.dataNascimento"
+        locale="pt-BR"
+        presentation="date"
+      ></ion-datetime>
+    </div>
+    <ion-item lines="none">
+      <ion-icon name="call-outline"></ion-icon>
+      <ion-input
+        [maskito]="phoneMask"
+        [maskitoElement]="maskPredicate"
+        [(ngModel)]="registerUser.telefone"
+        label="Telefone para contato"
+        labelPlacement="floating"
+        placeholder="Telefone"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item lines="none"  *ngIf="tipo === 0" >
+      <ion-label>Horario de funcionamento</ion-label>
+      <div class="semana"*ngFor="let i of semana">
+        <ion-checkbox (onChange)="EventChange($event)">{{i.dia}}</ion-checkbox>
+
+      </div>
+    </ion-item>
+
+    <ion-item *ngIf="tipo === 0" lines="none">
+      <ion-icon name="cash-outline"></ion-icon>
+      <ion-input
+        [(ngModel)]="registerUser.valorEntrada"
+        label="Valor de entrada"
+        labelPlacement="floating"
+        placeholder="Valor de entrada"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <ion-input
+        [(ngModel)]="registerUser.senha"
+        label="Senha"
+        labelPlacement="floating"
+        placeholder="Senha"
+        type="password"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <ion-input
+        [(ngModel)]="registerUser.csenha"
+        label="Confirmar Senha"
+        labelPlacement="floating"
+        placeholder="Confirmar Senha"
+        type="password"
+      ></ion-input>
+    </ion-item>
+    <ion-button (click)="criarUsuario(upload)"
+      ><ion-label>CONFIRMAR</ion-label>
+      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon
+    ></ion-button>
+  </div>
+</ion-content>

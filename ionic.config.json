@@ -1,0 +1,7 @@
+{
+  "name": "156-Belem",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

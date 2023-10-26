@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="img">
+      <div class="form">
+        <form>
+          <ion-item lines="none">
+            <ion-label position="floating"
+              ><ion-icon name="mail-outline"></ion-icon>Insira seu
+              email</ion-label
+            >
+            <ion-input placeholder="Insira seu email" type="email"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating"
+              ><ion-icon name="lock-closed-outline"></ion-icon>Insira sua
+              senha</ion-label
+            >
+            <ion-input
+              placeholder="Insira sua senha"
+              type="password"
+            ></ion-input>
+          </ion-item>
+        </form>
+        <ion-label>Esqueci minha senha</ion-label>
+        <ion-button
+          ><ion-label>CONFIRMAR</ion-label>
+          <ion-icon slot="end" name="arrow-forward-outline"></ion-icon
+        ></ion-button>
+        <ion-label class="or">Ou</ion-label>
+        <div class="social">
+          <ion-button>
+            <img src="../../../assets/icon/google-logo.png" />
+            <ion-label>Entrar com o google</ion-label>
+          </ion-button>
+          <ion-button>
+            <img src="../../../assets/icon/facebook-logo.png" />
+            <ion-label>Entrar com o facebook</ion-label>
+          </ion-button>
+          <ion-label>Não tem conta? <a (click)="presentAlert()">cadastre-se</a></ion-label>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,100 @@
+ion-content {
+  --background: #f2e3d0;
+  .header {
+    background: none;
+    display: flex;
+    width: 100vw;
+    height: 20vh;
+    .content {
+      color: #000;
+      display: flex;
+      width: 73vw;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0 0 2rem;
+      app-backbutton {
+        font-size: 2rem;
+        margin-top: 1rem;
+        align-self: flex-start;
+      }
+      .text {
+        max-width: 45vw;
+        text-align: center;
+      }
+    }
+  }
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    ion-item {
+      width: 90vw;
+      color: #000;
+      border-radius: 8px;
+      border: #fbefd9 solid 1px;
+      --background: none;
+      ion-icon {
+        margin-right: 10px;
+        font-size: 25px;
+      }
+    }
+    .avatar {
+      display: flex;
+      flex-direction: column;
+      width: 90vw;
+      height: 200px;
+      width: 90vw;
+      color: #000;
+      border-radius: 8px;
+      border: #fbefd9 solid 1px;
+      background: none;
+      padding: 15px;
+      gap: 5px;
+     label {
+      background: #fff;
+      max-height: 150px;
+      max-width: 150px;
+      min-height: 150px;
+      min-width: 150px;
+      border-radius: 8px;
+     }
+    }
+    .nascimento {
+      width: 90vw;
+      color: #000;
+      border-radius: 8px;
+      border: #fbefd9 solid 1px;
+      background: none;
+      padding: 15px;
+      ion-datetime {
+        border-radius: 8px;
+      }
+      ion-icon {
+        margin-right: 10px;
+        font-size: 25px;
+      }
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    ion-button {
+        --background: #5669ff;
+        --color: #fff;
+        display: flex;
+        width: 75vw;
+        height: 5vh;
+        font-size: 18px;
+        ion-icon {
+          color: #fff;
+          background: #3d56f0;
+          margin-left: 15px;
+          border-radius: 100%;
+        }
+      }
+  }
+}
+.semana{
+  display: flex;
+  flex-direction: column;
+}
