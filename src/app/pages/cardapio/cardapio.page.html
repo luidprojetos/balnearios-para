@@ -1,0 +1,13 @@
+<div class="content">
+  <div class="img">
+  </div>
+  <img src="{{img}}" alt="">
+  <h5>Cardapio</h5>
+
+  <div class="cardapio" >
+    <div *ngFor="let foto of cardapio">
+      <ion-img src="{{foto}}"></ion-img>
+    </div>
+  </div>
+  <app-navbar></app-navbar>
+</div>

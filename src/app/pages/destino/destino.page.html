@@ -1,0 +1,15 @@
+<div class="content">
+  <div class="img">
+  </div>
+  <ion-label>{{this.item.item.nome}}</ion-label>
+  <img src="{{this.item.item.avatar}}" alt="">
+
+ <div class="cards">
+  <ion-item  *ngFor="let i of menu" class="card" (click)="redirect(i.path, this.item.item )">
+    <ion-label>{{i.nome}}</ion-label>
+    <ion-img src="{{this.item.item.cardapio[0]}}"></ion-img>
+  </ion-item >
+ </div>
+
+ <app-navbar></app-navbar>
+</div>

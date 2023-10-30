@@ -1,0 +1,22 @@
+.barra{
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 4rem;
+  background: #FFF;
+  z-index: 1;
+  .botao{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    ion-button{
+      --background: none;
+      ion-icon{
+        color: black;
+      }
+    }
+  }
+}

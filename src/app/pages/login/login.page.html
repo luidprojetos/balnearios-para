@@ -2,13 +2,13 @@
   <div class="container">
     <div class="img">
       <div class="form">
-        <form>
+        <form [formGroup]="userForm">
           <ion-item lines="none">
             <ion-label position="floating"
               ><ion-icon name="mail-outline"></ion-icon>Insira seu
               email</ion-label
             >
-            <ion-input placeholder="Insira seu email" type="email"></ion-input>
+            <ion-input formControlName="email" placeholder="Insira seu email" type="email" ></ion-input>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating"
@@ -16,6 +16,7 @@
               senha</ion-label
             >
             <ion-input
+            formControlName="password"
               placeholder="Insira sua senha"
               type="password"
             ></ion-input>
@@ -23,6 +24,7 @@
         </form>
         <ion-label>Esqueci minha senha</ion-label>
         <ion-button
+        (click)="login()"
           ><ion-label>CONFIRMAR</ion-label>
           <ion-icon slot="end" name="arrow-forward-outline"></ion-icon
         ></ion-button>

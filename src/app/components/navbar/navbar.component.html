@@ -1,0 +1,7 @@
+<div class="barra">
+  <div class="botao" >
+    <ion-button *ngFor="let i of pagina" (click)="redirect('inicio')">
+      <ion-icon size="large" name="{{i.iconi}}">{{i}}</ion-icon>
+    </ion-button>
+  </div>
+</div>

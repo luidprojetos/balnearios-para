@@ -1,0 +1,29 @@
+.content{
+  overflow: scroll;
+
+  .img {
+    background-image: url("../../../assets/logo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  img{
+    width: 100vw;
+    height: 10rem;
+  }
+
+  ion-img{
+    margin-bottom: 2rem;
+  }
+
+  h5{
+    text-align: center;
+  }
+.cardapio{
+  margin-bottom: 6rem;
+}
+}

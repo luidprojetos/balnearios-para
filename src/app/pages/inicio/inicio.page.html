@@ -1,0 +1,13 @@
+<div class="content">
+ <div class="img">
+  <ion-searchbar color="light" placeholder="Search" (click)="redirect('buscar','')"></ion-searchbar>
+ </div>
+
+ <div class="locais">
+  <div class="local" *ngFor="let item of locais" (click)="redirect('destino', item)">
+    <ion-label>{{item.nome}}</ion-label>
+    <img class="foto" src="{{item.avatar}}" alt="">
+  </div>
+ </div>
+ <app-navbar></app-navbar>
+</div>

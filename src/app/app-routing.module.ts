@@ -9,6 +9,30 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'inicio',
+    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
+  },
+  {
+    path: 'destino',
+    loadChildren: () => import('./pages/destino/destino.module').then( m => m.DestinoPageModule)
+  },
+  {
+    path: 'buscar',
+    loadChildren: () => import('./pages/buscar/buscar.module').then( m => m.BuscarPageModule)
+  },
+  {
+    path: 'cardapio',
+    loadChildren: () => import('./pages/cardapio/cardapio.module').then( m => m.CardapioPageModule)
+  },
+  {
+    path: 'foto',
+    loadChildren: () => import('./pages/foto/foto.module').then( m => m.FotoPageModule)
+  },
+  {
+    path: 'inicio',
+    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
+  },
+  {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },

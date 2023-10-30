@@ -51,18 +51,18 @@ ion-content {
       background: none;
       padding: 15px;
       gap: 5px;
-      img{
+      img {
         width: 100px;
         height: 100px;
       }
-     label {
-      background: #fff;
-      max-height: 150px;
-      max-width: 150px;
-      min-height: 150px;
-      min-width: 150px;
-      border-radius: 8px;
-     }
+      label {
+        background: #fff;
+        max-height: 150px;
+        max-width: 150px;
+        min-height: 150px;
+        min-width: 150px;
+        border-radius: 8px;
+      }
     }
     .nascimento {
       width: 90vw;
@@ -83,26 +83,26 @@ ion-content {
       gap: 5px;
     }
     ion-button {
-        --background: #5669ff;
-        --color: #fff;
-        display: flex;
-        width: 75vw;
-        height: 5vh;
-        font-size: 18px;
-        ion-icon {
-          color: #fff;
-          background: #3d56f0;
-          margin-left: 15px;
-          border-radius: 100%;
-        }
+      --background: #5669ff;
+      --color: #fff;
+      display: flex;
+      width: 75vw;
+      height: 5vh;
+      font-size: 18px;
+      ion-icon {
+        color: #fff;
+        background: #3d56f0;
+        margin-left: 15px;
+        border-radius: 100%;
       }
+    }
   }
 }
-.semana{
+.semana {
   display: flex;
   flex-direction: column;
 }
-.horarioFuncionamento{
+.horarioFuncionamento {
   display: flex;
   flex-direction: row;
   text-align: center;
@@ -110,13 +110,21 @@ ion-content {
   align-items: center;
 }
 
-img{
+img {
   width: 100px;
   height: 100px;
   background-color: #3d56f0;
 }
 
-.cardapio{
+.cardapio {
   display: flex;
-
+}
+.retangulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:1rem;
+  width: 150px;
+  height: 150px;
+  background-color: #808080;
 }

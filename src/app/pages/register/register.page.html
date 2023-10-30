@@ -9,8 +9,8 @@
     </div>
   </div>
   <div class="body">
-    <div class="avatar"
-      ><label for="upload-photo">
+    <div class="avatar" >
+      <label   >
         <input
           #upload
           style="display: none"
@@ -20,7 +20,12 @@
           (change)="handleFile($event)"
         />
 
-        <img *ngIf="url" [src]="url" alt="User Photo" style="min-width: 150px; min-height: 150px;" />
+        <img
+          *ngIf="url"
+          [src]="url"
+          alt="User Photo"
+          style="min-width: 150px; min-height: 150px"
+        />
         <ion-icon
           style="font-size: 150px"
           *ngIf="!url"
@@ -38,6 +43,36 @@
         placeholder="Nome completo"
       ></ion-input>
     </ion-item>
+
+    <ion-item lines="none" *ngIf="tipo === 0">
+      <div>
+        <ion-icon name="id-card-outline"></ion-icon>
+        <label for="documento">Documento</label>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col *ngFor="let item of docs; let i = index" size="6">
+              <div class="retangulo" (click)="openFileInput(item.nome)">
+                <label *ngIf="!docuemntoUrls[i]">{{item.nome}}</label>
+                <div *ngFor="let imageUrl of docuemntoUrls[i]; let j = index">
+                  <img [src]="imageUrl" alt="" *ngIf="docuemntoUrls[i] && docuemntoUrls[i].length > 0">
+                </div>
+                <input
+                  type="file"
+                  [id]="item.nome"
+                  class="documento"
+                  style="display: none"
+                  (change)="handleDocumento($event, i)"
+                />
+              </div>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </div>
+    </ion-item>
+
     <ion-item lines="none">
       <ion-icon name="mail-outline"></ion-icon>
       <ion-input
@@ -48,6 +83,7 @@
         type="email"
       ></ion-input>
     </ion-item>
+
     <ion-item lines="none" *ngIf="tipo === 0">
       <ion-icon name="pin-outline"></ion-icon>
       <ion-input
@@ -58,46 +94,43 @@
       ></ion-input>
     </ion-item>
 
-    <ion-item lines="none" *ngIf="tipo === 0" >
+    <ion-item lines="none" *ngIf="tipo === 0">
       <div>
         <ion-label>
           <ion-icon name="clipboard-outline"></ion-icon>
           <label for="foto-cardapio">Cardapio</label>
         </ion-label>
 
-
-
         <div>
           <ion-grid>
-            <ion-row  size="4" class="linha">
-              <ion-col *ngFor="let item of urls" size="4" class="ver" >
+            <ion-row size="4" class="linha">
+              <ion-col *ngFor="let item of urls" size="4" class="ver">
                 <div class="img">
-                 <img [src]="item" alt="imagens">
+                  <img [src]="item" alt="imagens" />
                 </div>
               </ion-col>
               <ion-col>
                 <div class="cardapio">
                   <label for="foto-cardapio">
-                  <input
-                    type="file"
-                    multiple
-                    style="display: none"
-                    #cardapio
-                    id="foto-cardapio"
-                    name="foto-cardapio"
-                    (change)="handleCardapio($event)"
-                  />
-                  <ion-label><ion-icon name="camera-outline"></ion-icon>
-                    Enviar imagens
-                  </ion-label>
+                    <input
+                      type="file"
+                      multiple
+                      style="display: none"
+                      #cardapio
+                      id="foto-cardapio"
+                      name="foto-cardapio"
+                      (change)="handleCardapio($event)"
+                    />
+                    <ion-label
+                      ><ion-icon name="camera-outline"></ion-icon>
+                      Enviar imagens
+                    </ion-label>
                   </label>
                 </div>
               </ion-col>
             </ion-row>
-
           </ion-grid>
         </div>
-
       </div>
     </ion-item>
 
@@ -124,16 +157,23 @@
       ></ion-input>
     </ion-item>
 
-    <ion-item lines="none"  *ngIf="tipo === 0" >
-
-
+    <ion-item lines="none" *ngIf="tipo === 0">
       <ion-grid>
+        <ion-label><ion-icon name="pin"></ion-icon>Funcionamento</ion-label>
         <ion-row *ngFor="let i of semana">
-          <ion-checkbox  (ionChange)="EventChange($event, i)">{{i.dia}}</ion-checkbox>
+          <ion-checkbox (ionChange)="EventChange($event, i)"
+            >{{i.dia}}</ion-checkbox
+          >
           <div *ngIf="i.ativo" class="horarioFuncionamento">
-            <ion-datetime presentation="time" (ionChange)="tempoInicioCahnge($event, i)"></ion-datetime>
+            <ion-datetime
+              presentation="time"
+              (ionChange)="tempoInicioCahnge($event, i)"
+            ></ion-datetime>
             <ion-label>ate</ion-label>
-            <ion-datetime presentation="time" (ionChange)="tempoFimCahnge($event, i)"></ion-datetime>
+            <ion-datetime
+              presentation="time"
+              (ionChange)="tempoFimCahnge($event, i)"
+            ></ion-datetime>
           </div>
         </ion-row>
       </ion-grid>
@@ -142,6 +182,8 @@
     <ion-item *ngIf="tipo === 0" lines="none">
       <ion-icon name="cash-outline"></ion-icon>
       <ion-input
+        [maskito]="reais"
+        [maskitoElement]="maskPredicate"
         [(ngModel)]="registerUser.valorEntrada"
         label="Valor de entrada"
         labelPlacement="floating"
