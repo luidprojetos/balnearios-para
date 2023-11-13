@@ -34,3 +34,22 @@ ion-label {
   font-weight: 600;
   font-size: 22px;
 }
+
+
+.dias{
+  margin-top: 1rem;
+  background-color: #80808054;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  .title{
+   align-items:start;
+   margin-left: 1rem;
+
+  }
+  ion-label{
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    margin-top: 1rem;
+  }
+}

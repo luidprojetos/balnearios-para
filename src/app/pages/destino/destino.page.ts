@@ -17,7 +17,7 @@ export class DestinoPage implements OnInit {
   ];
   constructor(private router: Router) {
     this.item = this.router.getCurrentNavigation()?.extras.state
-    console.log(this.item.item.cardapio)
+    console.log(this.item)
   }
 
   ngOnInit() {}

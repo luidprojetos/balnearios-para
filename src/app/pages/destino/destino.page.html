@@ -3,12 +3,33 @@
   </div>
   <ion-label>{{this.item.item.nome}}</ion-label>
   <img src="{{this.item.item.avatar}}" alt="">
+  <div>
+    <ion-item>
+      <ion-label>Endereço:</ion-label>
+      <ion-label>{{item.item.endereco}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Telefone:</ion-label>
+      <ion-label>{{item.item.telefone}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Valor:</ion-label>
+      <ion-label>{{item.item.valorEntrada}}</ion-label>
+    </ion-item>
 
+
+      <div class="dias">
+        <ion-label class="title">Dias de funcionamento:</ion-label>
+        <ion-label *ngFor="let i of item.item.horarioFuincionamento">{{i.dia}}</ion-label>
+      </div>
+
+  </div>
  <div class="cards">
   <ion-item  *ngFor="let i of menu" class="card" (click)="redirect(i.path, this.item.item )">
     <ion-label>{{i.nome}}</ion-label>
     <ion-img src="{{this.item.item.cardapio[0]}}"></ion-img>
   </ion-item >
+
  </div>
 
  <app-navbar></app-navbar>

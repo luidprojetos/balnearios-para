@@ -73,6 +73,9 @@ export class RegisterPage implements OnInit {
     this.tipo =
       this.router.getCurrentNavigation()?.extras.queryParams?.['tipo'];
     this.registerUser.tipo = this.tipo;
+
+
+    console.log(this.images)
   }
 
   async criarUsuario(upload: any) {
